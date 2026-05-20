@@ -74,13 +74,6 @@ export const CommunitySection: React.FC<CommunitySectionProps> = ({ lang }) => {
               {t.communityDesc}
             </p>
           </div>
-
-          <div>
-            <button className="px-6 py-3 bg-[#4c1d95] hover:bg-[#5b21b6] border border-purple-500/30 text-sm font-bold text-white rounded-full shadow-lg shadow-purple-950/40 hover:shadow-purple-500/30 flex items-center gap-2 group transition-all duration-300 pointer-events-auto cursor-pointer">
-              {t.communityBtnJoin}
-              <ArrowUpRight className="w-4 h-4 text-purple-200 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
-          </div>
         </div>
 
         {/* Reconstructed Row conforming exactly to portrait screenshot layout */}

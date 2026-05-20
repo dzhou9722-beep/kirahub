@@ -39,17 +39,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
     }
   };
 
-  // Safe navigation items
-  const navItems = [
-    { label: t.navHome, id: 'home' },
-    { label: t.navFeatures, id: 'product_spec' },
-    { label: t.navGameplay, id: 'gameplay' },
-    { label: t.navAiWorkshop, id: 'ai_workshop' },
-    { label: t.navHardware, id: 'hardware' },
-    { label: t.navCommunity, id: 'community' },
-    { label: t.navSupport, id: 'footer' }
-  ];
-
   return (
     <div className="relative w-full min-h-[85vh] lg:min-h-[80vh] xl:min-h-[76vh] bg-[#04010d] overflow-hidden flex flex-col pt-3 pb-12 px-8">
       
@@ -67,21 +56,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
           </div>
           <span className="text-2xl font-black font-display text-white tracking-tight group-hover:text-purple-300 transition-colors">KiraHub</span>
         </div>
-
-        {/* Center menu links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className="relative px-1 py-1 transition-all duration-300 text-gray-300 hover:text-white cursor-pointer group"
-            >
-              {item.label}
-              {/* Animated underline */}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#9d53ff] transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
-        </nav>
 
         {/* Right download APP & Bilingual switch dropdown */}
         <div className="flex items-center gap-4 relative">
@@ -113,8 +87,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
                   {[
                     { code: 'zh', name: '简体中文', active: true },
                     { code: 'en', name: 'English', active: true },
-                    { code: 'ja', name: '日本語', active: false },
-                    { code: 'ko', name: '한국어', active: false },
                   ].map((item) => (
                     <button
                       key={item.code}

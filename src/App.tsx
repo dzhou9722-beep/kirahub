@@ -10,9 +10,11 @@ import { HardwareSection } from './components/HardwareSection';
 import { AiWorkshopSection } from './components/AiWorkshopSection';
 import { CommunitySection } from './components/CommunitySection';
 import { FooterSection } from './components/FooterSection';
+import { AgreementViewer } from './components/AgreementViewer';
 
 export default function App() {
   const [lang, setLang] = useState<'zh' | 'en'>('zh');
+  const [view, setView] = useState<'landing' | 'privacy' | 'terms'>('landing');
 
   const handleChangeLanguage = (newLang: 'zh' | 'en') => {
     setLang(newLang);
@@ -20,8 +22,33 @@ export default function App() {
   
   // Smooth navigation handler to scroll to specific sections cleanly
   const handleNavigate = (sectionId: string) => {
+    if (sectionId === 'privacy') {
+      setView('privacy');
+      return;
+    }
+    if (sectionId === 'terms') {
+      setView('terms');
+      return;
+    }
     if (sectionId === 'home') {
+      setView('landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    // Switch to landing first if on another view
+    if (view !== 'landing') {
+      setView('landing');
+      setTimeout(() => {
+        let targetId = sectionId;
+        if (sectionId === 'product_spec') {
+          targetId = 'hardware';
+        }
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
       return;
     }
     
@@ -36,6 +63,18 @@ export default function App() {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  if (view === 'privacy' || view === 'terms') {
+    return (
+      <AgreementViewer
+        type={view}
+        lang={lang}
+        onClose={() => setView('landing')}
+        onChangeLang={handleChangeLanguage}
+        onSwitchType={(newType) => setView(newType)}
+      />
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-[#03010a] text-gray-200 selection:bg-purple-600/30 selection:text-white antialiased">
