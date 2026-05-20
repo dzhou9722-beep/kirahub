@@ -1,0 +1,6 @@
+{
+  "name": "KiraHub",
+  "description": "KiraHub 官方网站 — 你的角色，在现实中陪伴你。新一代电子吧唧平台，内容和色彩精准还原。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
