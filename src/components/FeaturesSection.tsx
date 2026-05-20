@@ -25,33 +25,87 @@ interface FeaturesSectionProps {
 export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang];
 
-  const getIcon = (name: string, colorClass: string) => {
-    switch (name) {
-      case 'Image':
-        return <ImageIcon className={`w-5 h-5 ${colorClass}`} />;
-      case 'FileVideo':
-        return <FileVideo className={`w-5 h-5 ${colorClass}`} />;
-      case 'Clapperboard':
-        return <Clapperboard className={`w-5 h-5 ${colorClass}`} />;
-      case 'MessageSquareText':
-        return <MessageSquareText className={`w-5 h-5 ${colorClass}`} />;
-      case 'Sparkles':
-        return <Sparkles className={`w-5 h-5 ${colorClass}`} />;
-      case 'CloudLightning':
-        return <CloudLightning className={`w-5 h-5 ${colorClass}`} />;
+  const getIcon = (id: string, colorClass: string) => {
+    switch (id) {
+      case 'static_image':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+        );
+      case 'gif_dynamic':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M14 9C13.5 8.3 12.3 8 11.5 8C9.5 8 8 9.5 8 12C8 14.5 9.5 16 11.5 16C13.5 16 14.5 14.5 14.5 13H11.5" />
+          </svg>
+        );
+      case 'video_playback':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M23 7l-7 5 7 5V7z" />
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+          </svg>
+        );
+      case 'danmaku_interaction':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            <path d="M8 7h8M8 11h5" />
+          </svg>
+        );
+      case 'ai_generation':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3Z" />
+          </svg>
+        );
+      case 'cloud_sync':
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-1.63-1.11-3.04-2.68-3.39L18 12V11a5 5 0 0 0-10 0v.1A4.5 4.5 0 1 0 9 20" />
+            <path d="M12 11v6" />
+            <polyline points="9 14 12 17 15 14" />
+          </svg>
+        );
       default:
-        return <Sparkles className={`w-5 h-5 ${colorClass}`} />;
+        return (
+          <svg className={`w-[18px] h-[18px] ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+        );
+    }
+  };
+
+  const getIconContainerClass = (id: string) => {
+    switch (id) {
+      case 'static_image': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#1d123a]/80 to-[#9d53ff]/40 border border-[#9d53ff]/60 shadow-[0_0_15px_rgba(157,83,255,0.4)]';
+      case 'gif_dynamic': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#0c2340]/80 to-blue-500/40 border border-blue-400/60 shadow-[0_0_15px_rgba(59,130,246,0.4)]';
+      case 'video_playback': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#101035]/80 to-indigo-500/40 border border-indigo-400/60 shadow-[0_0_15px_rgba(99,102,241,0.4)]';
+      case 'danmaku_interaction': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#2a0e28]/80 to-[#ec4899]/40 border border-[#ec4899]/60 shadow-[0_0_15px_rgba(236,72,153,0.4)]';
+      case 'ai_generation': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#221035]/80 to-[#a855f7]/40 border border-[#a855f7]/60 shadow-[0_0_15px_rgba(168,85,247,0.45)]';
+      case 'cloud_sync': 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#110e28]/80 to-[#6366f1]/40 border border-[#6366f1]/60 shadow-[0_0_15px_rgba(99,102,241,0.4)]';
+      default: 
+        return 'w-9 h-9 rounded-xl flex items-center justify-center bg-white/5 border border-white/10';
     }
   };
 
   const getColorTheme = (id: string) => {
     switch (id) {
-      case 'static_image': return { iconText: 'text-[#9d53ff]', bgGlow: 'from-[#9d53ff]/10 to-transparent' };
-      case 'gif_dynamic': return { iconText: 'text-[#ec4899]', bgGlow: 'from-[#ec4899]/10 to-transparent' };
-      case 'video_playback': return { iconText: 'text-[#3b82f6]', bgGlow: 'from-[#3b82f6]/10 to-transparent' };
-      case 'danmaku_interaction': return { iconText: 'text-[#06b6d4]', bgGlow: 'from-[#06b6d4]/10 to-transparent' };
-      case 'ai_generation': return { iconText: 'text-[#eab308]', bgGlow: 'from-[#eab308]/10 to-transparent' };
-      case 'cloud_sync': return { iconText: 'text-[#6366f1]', bgGlow: 'from-[#6366f1]/10 to-transparent' };
+      case 'static_image': return { iconText: 'text-purple-300', bgGlow: 'from-[#9d53ff]/15 to-transparent' };
+      case 'gif_dynamic': return { iconText: 'text-cyan-300', bgGlow: 'from-cyan-500/15 to-transparent' };
+      case 'video_playback': return { iconText: 'text-indigo-300', bgGlow: 'from-indigo-500/15 to-transparent' };
+      case 'danmaku_interaction': return { iconText: 'text-pink-300', bgGlow: 'from-pink-500/15 to-transparent' };
+      case 'ai_generation': return { iconText: 'text-purple-200', bgGlow: 'from-purple-500/15 to-transparent' };
+      case 'cloud_sync': return { iconText: 'text-indigo-300', bgGlow: 'from-indigo-500/15 to-transparent' };
       default: return { iconText: 'text-white', bgGlow: 'from-white/5 to-transparent' };
     }
   };
@@ -77,7 +131,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ lang }) => {
   };
 
   return (
-    <section id="gameplay" className="relative w-full py-24 bg-[#050110] overflow-hidden px-8">
+    <section id="gameplay" className="relative w-full pt-14 pb-20 bg-[#050110] overflow-hidden px-8">
       
       {/* Grid structure backgrounds and lighting */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,40,190,0.06)_0%,transparent_70%)] pointer-events-none" />
@@ -86,11 +140,11 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ lang }) => {
       <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center">
         
         {/* Title area */}
-        <div className="text-center mb-16 flex flex-col items-center">
+        <div className="text-center mb-12 flex flex-col items-center">
           <h2 className="text-4xl font-extrabold text-white tracking-tight mb-3">
             {t.featuresTitle}
           </h2>
-          <p className="text-gray-400 text-sm font-light uppercase tracking-widest max-w-lg">
+          <p className="text-gray-200 text-sm font-semibold uppercase tracking-widest max-w-lg">
             {t.featuresSubtitle}
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-[#9d53ff] to-[#ec4899] mt-4 rounded-full animate-pulse" />
@@ -108,32 +162,35 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ lang }) => {
             return (
               <div
                 key={card.id}
-                className="relative overflow-hidden rounded-3xl border border-white/5 bg-[#0a0614]/80 p-6 flex flex-col items-center justify-between text-center min-h-[420px] transition-all duration-300 hover:border-[#9d53ff]/20 hover:bg-[#0c0819] hover:shadow-[0_10px_35px_-8px_rgba(157,83,255,0.15)] group"
+                className="relative overflow-hidden rounded-3xl border border-white/5 bg-[#0a0614]/80 p-8 pb-6 flex flex-col items-start justify-between text-left min-h-[460px] transition-all duration-300 hover:border-[#9d53ff]/20 hover:bg-[#0c0819] hover:shadow-[0_10px_35px_-8px_rgba(157,83,255,0.15)] group"
               >
                 {/* Background glow vignette */}
                 <div className={`absolute top-0 inset-x-0 h-40 bg-gradient-to-b ${colors.bgGlow} opacity-40 group-hover:opacity-60 transition-opacity duration-300`} />
 
                 {/* Card Header Info */}
-                <div className="relative w-full flex flex-col items-center z-10">
-                  {/* Icon wrapper */}
-                  <div className="p-3 bg-white/5 rounded-2xl mb-4 border border-white/5 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                    {getIcon(card.iconName, colors.iconText)}
-                  </div>
-                  
-                  {/* Title & Badge */}
-                  <div className="flex items-center gap-2 mb-2 justify-center">
-                    <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
-                      {copy.title}
-                    </h3>
-                    {card.isNew && (
-                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-gradient-to-r from-red-500 to-[#ec4899] text-white tracking-widest leading-none">
-                        NEW
-                      </span>
-                    )}
+                <div className="relative w-full flex flex-col items-start z-10">
+                  {/* Icon & Title Horizontal Layout Row */}
+                  <div className="flex items-center gap-3 mb-3">
+                    {/* Glowing neon Icon Wrapper */}
+                    <div className={`${getIconContainerClass(card.id)} flex-shrink-0 transition-all duration-300 group-hover:scale-110`}>
+                      {getIcon(card.id, colors.iconText)}
+                    </div>
+                    
+                    {/* Title & Badge */}
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors">
+                        {copy.title}
+                      </h3>
+                      {card.isNew && (
+                        <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-gradient-to-r from-red-500 to-[#ec4899] text-white tracking-widest leading-none">
+                          NEW
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-xs text-gray-400 font-light max-w-[210px] leading-relaxed">
+                  {/* Description underneath */}
+                  <p className="text-xs text-gray-400 font-normal leading-relaxed text-left max-w-xs pl-1">
                     {copy.desc}
                   </p>
                 </div>

@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-[#04010d] overflow-hidden flex flex-col pt-6 pb-20 px-8">
+    <div className="relative w-full min-h-[85vh] lg:min-h-[80vh] xl:min-h-[76vh] bg-[#04010d] overflow-hidden flex flex-col pt-3 pb-12 px-8">
       
       {/* Absolute ambient lights & blurred circles to replicate depth */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] rounded-full bg-[#9d53ff]/15 blur-[120px] pointer-events-none" />
@@ -59,13 +59,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
       <div className="absolute bottom-[10%] left-[20%] w-[40%] h-[50%] rounded-full bg-[#ec4899]/5 blur-[140px] pointer-events-none" />
 
       {/* 1. Header/Navigation Bar */}
-      <header className="relative w-full max-w-7xl mx-auto flex items-center justify-between py-4 z-40">
+      <header className="relative w-full max-w-7xl mx-auto flex items-center justify-between py-2 z-40">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer group" onClick={() => onNavigate('home')}>
-          <div className="relative w-9 h-9 transition-transform duration-300 group-hover:scale-110">
-            <KiraHubLogo size={36} />
+        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onNavigate('home')}>
+          <div className="relative w-12 h-12 transition-transform duration-300 group-hover:scale-110">
+            <KiraHubLogo size={48} />
           </div>
-          <span className="text-xl font-bold font-display text-white tracking-tight group-hover:text-purple-300 transition-colors">KiraHub</span>
+          <span className="text-2xl font-black font-display text-white tracking-tight group-hover:text-purple-300 transition-colors">KiraHub</span>
         </div>
 
         {/* Center menu links */}
@@ -74,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className="relative px-1 py-1 transition-all duration-300 text-gray-400 hover:text-white cursor-pointer group"
+              className="relative px-1 py-1 transition-all duration-300 text-gray-300 hover:text-white cursor-pointer group"
             >
               {item.label}
               {/* Animated underline */}
@@ -93,9 +93,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
             onMouseLeave={() => setLangDropdownOpen(false)}
           >
             <button 
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold text-gray-300 border border-white/10 bg-white/5 hover:bg-white/10 hover:text-white hover:border-[#9d53ff]/30 transition-all duration-300 cursor-pointer"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:text-white hover:border-[#9d53ff]/30 transition-all duration-300 cursor-pointer"
             >
-              <Globe className="w-3.5 h-3.5 text-purple-400" />
+              <Globe className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
               <span>{lang === 'zh' ? '简体中文' : 'English'}</span>
               <ChevronDown className={`w-3 h-3 text-gray-400 transition-transform duration-200 ${langDropdownOpen ? 'rotate-180 text-purple-400' : ''}`} />
             </button>
@@ -128,8 +128,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
                         !item.active 
                           ? 'opacity-40 cursor-not-allowed text-gray-500' 
                           : lang === item.code 
-                            ? 'bg-[#9d53ff]/20 text-purple-200 border border-[#9d53ff]/30' 
-                            : 'text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer'
+                            ? 'bg-[#9d53ff]/20 text-purple-100 border border-[#9d53ff]/30' 
+                            : 'text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -155,62 +155,62 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
       </header>
 
       {/* 2. Hero Body */}
-      <div className="relative w-full max-w-7xl mx-auto flex-1 flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 lg:mt-20 z-30">
+      <div className="relative w-full max-w-7xl mx-auto flex-1 flex flex-col lg:flex-row items-center justify-between gap-8 mt-5 lg:mt-8 xl:mt-10 z-30">
         
         {/* Left side text column */}
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pr-6">
           
           {/* Main heading */}
-          <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+          <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-5">
             {t.heroTitlePart1}
             <br />
             <span className="text-white">{t.heroTitleInReality}</span>
-            <span className="relative inline-block ml-2 text-transparent bg-clip-text bg-gradient-to-r from-[#b17efb] via-[#9d53ff] to-[#ec4899] drop-shadow-[0_4px_12px_rgba(157,83,255,0.35)]">
+            <span className="relative inline-block ml-2 text-transparent bg-clip-text bg-gradient-to-r from-[#b17efb] via-[#9d53ff] to-[#ec4899] drop-shadow-[0_4px_12px_rgba(157,83,255,0.4)] font-black">
               {t.heroTitleCompanion}
             </span>
           </h1>
 
           {/* Description list representation */}
-          <div className="flex flex-col gap-2 text-base md:text-lg text-gray-400 mb-8 border-l-2 border-[#9d53ff]/40 pl-4">
-            <p className="font-medium text-purple-200">
+          <div className="flex flex-col gap-2 text-base md:text-lg text-gray-200 mb-6 border-l-2 border-[#9d53ff]/60 pl-4">
+            <p className="font-semibold text-purple-300">
               {t.heroSubChips}
             </p>
-            <p className="text-gray-400 font-light">
+            <p className="text-gray-300 font-normal leading-relaxed">
               {t.heroDesc}
             </p>
           </div>
 
           {/* Buttons container */}
-          <div className="flex flex-wrap items-center gap-4 mb-12">
+          <div className="flex flex-wrap items-center gap-4 mb-8">
             <button
               onClick={() => onNavigate('footer')}
-              className="px-7 py-3.5 rounded-full text-base font-semibold text-white bg-gradient-to-r from-[#9d53ff] to-blue-600 shadow-lg shadow-[#9d53ff]/20 hover:shadow-purple-500/40 hover:scale-[1.02] flex items-center gap-2 transition-all duration-300 cursor-pointer"
+              className="px-7 py-3.5 rounded-full text-base font-bold text-white bg-gradient-to-r from-[#9d53ff] to-blue-600 shadow-lg shadow-[#9d53ff]/25 hover:shadow-purple-500/40 hover:scale-[1.02] flex items-center gap-2 transition-all duration-300 cursor-pointer"
             >
-              <Smartphone className="w-5 h-5" />
+              <Smartphone className="w-5 h-5 text-white" />
               {t.heroBtnDownload}
             </button>
             <button
               onClick={() => onNavigate('hardware')}
-              className="px-7 py-3.5 rounded-full text-base font-semibold text-gray-300 border border-gray-700 bg-gray-900/40 hover:bg-gray-800/60 hover:text-white flex items-center gap-2 transition-all duration-300 cursor-pointer"
+              className="px-7 py-3.5 rounded-full text-base font-bold text-white border border-gray-600 bg-gray-900/50 hover:bg-gray-800 hover:text-white flex items-center gap-2 transition-all duration-300 cursor-pointer"
             >
-              <Play className="w-4 h-4 text-[#9d53ff]" />
+              <Play className="w-4 h-4 text-[#9d53ff] fill-current" />
               {t.heroBtnLearn}
             </button>
           </div>
 
           {/* Bottom small tags features row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full bg-gray-900/10 border border-white/5 rounded-2xl p-4 backdrop-blur-md">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full bg-gray-900/20 border border-white/10 rounded-2xl p-4 backdrop-blur-md">
             {[
-              { icon: Tv, color: 'text-purple-400' },
-              { icon: BatteryCharging, color: 'text-amber-400' },
-              { icon: Feather, color: 'text-pink-400' },
-              { icon: Wifi, color: 'text-blue-400' }
+              { icon: Tv, color: 'text-purple-300' },
+              { icon: BatteryCharging, color: 'text-amber-300' },
+              { icon: Feather, color: 'text-pink-300' },
+              { icon: Wifi, color: 'text-blue-300' }
             ].map((tag, idx) => (
               <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
-                <div className={`p-1.5 rounded-lg bg-gray-800/50 ${tag.color}`}>
+                <div className={`p-1.5 rounded-lg bg-gray-800/80 ${tag.color}`}>
                   <tag.icon className="w-4 h-4" />
                 </div>
-                <span className="text-xs font-semibold text-gray-300">{getTagText(idx)}</span>
+                <span className="text-xs font-bold text-gray-200">{getTagText(idx)}</span>
               </div>
             ))}
           </div>
@@ -250,7 +250,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
           </div>
 
           {/* Slide Indicator circles */}
-          <div className="flex items-center gap-3 mt-10">
+          <div className="flex items-center gap-3 mt-6">
             {CHARACTERS_LIST.map((char, index) => (
               <button
                 key={char.id}
