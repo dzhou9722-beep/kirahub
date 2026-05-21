@@ -102,9 +102,9 @@ function CHAR_blue_small(): AnimeCharacter {
 
 // 2. Hardware Specs
 export const HARDWARE_SPECS: HardwareSpec[] = [
-  { icon: 'CircleDot', label: '1.28\'\' 圆形屏幕', sublabel: '圆形高清显示屏，饱满细腻' },
-  { icon: 'Grid', label: '240×240 分辨率', sublabel: '像素级显色，精美画质' },
-  { icon: 'BatteryCharging', label: '超长续航 30天+', sublabel: '极低能耗，长时间陪伴不间断' },
+  { icon: 'CircleDot', label: '1.85\'\' 精美屏幕', sublabel: '大屏视界更清晰，视野饱满绚丽' },
+  { icon: 'Grid', label: '360×360 分辨率', sublabel: '像素级显色，细节分毫毕现' },
+  { icon: 'BatteryCharging', label: '24小时 强劲续航', sublabel: '全天候不间断陪伴，强劲持久' },
   { icon: 'Magnet', label: '磁吸底座/挂绳', sublabel: '多样佩戴挂载方式，便携实用' }
 ];
 

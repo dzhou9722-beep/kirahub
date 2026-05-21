@@ -161,13 +161,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, lang, onCh
               <Smartphone className="w-5 h-5 text-white" />
               {t.heroBtnDownload}
             </button>
-            <button
-              onClick={() => onNavigate('hardware')}
-              className="px-7 py-3.5 rounded-full text-base font-bold text-white border border-gray-600 bg-gray-900/50 hover:bg-gray-800 hover:text-white flex items-center gap-2 transition-all duration-300 cursor-pointer"
-            >
-              <Play className="w-4 h-4 text-[#9d53ff] fill-current" />
-              {t.heroBtnLearn}
-            </button>
           </div>
 
           {/* Bottom small tags features row */}

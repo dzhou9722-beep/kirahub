@@ -42,11 +42,11 @@ export const HardwareSection: React.FC<HardwareSectionProps> = ({ lang }) => {
   const getTranslatedSpec = (iconName: string) => {
     switch (iconName) {
       case 'CircleDot':
-        return { label: lang === 'en' ? "1.28'' Round Screen" : "1.28' 圆形屏幕", sub: lang === 'en' ? "Crisp circular HD panel, full color" : "圆形高清显示屏，饱满细腻" };
+        return { label: lang === 'en' ? "1.85'' Brilliant Screen" : "1.85' 精美屏幕", sub: lang === 'en' ? "Vibrant high-contrast premium panel" : "大屏视界更清晰，视野饱满绚丽" };
       case 'Grid':
-        return { label: lang === 'en' ? "240×240 Resolution" : "240×240 分辨率", sub: lang === 'en' ? "Subpixel sharp chromatic range" : "像素级显色，精美画质" };
+        return { label: lang === 'en' ? "360×360 Resolution" : "360×360 分辨率", sub: lang === 'en' ? "High resolution, subpixel sharp focus" : "像素级显色，细节分毫毕现" };
       case 'BatteryCharging':
-        return { label: lang === 'en' ? "30+ Days Life" : "超长续航 30天+", sub: lang === 'en' ? "Ultra low battery consumption mode" : "极低能耗，长时间陪伴不间断" };
+        return { label: lang === 'en' ? "24-Hour Active Battery" : "24小时 强劲续航", sub: lang === 'en' ? "Powerful endurance for all-day companionship" : "全天候不间断陪伴，强劲持久" };
       case 'Magnet':
         return { label: lang === 'en' ? "Modular Magnetic Base" : "磁吸底座/挂绳", sub: lang === 'en' ? "Multi-wearing setups, high flexibility" : "多样佩戴挂载方式，便携实用" };
       default:
